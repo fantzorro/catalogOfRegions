@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.RegionMapper">
+
+    <select id="findById" parameterType="long" resultType="org.example.Region">
+    SELECT id, name, short_name FROM region WHERE id = #{id}
+    </select>
+
+    <insert id="addRegion" parameterType="org.example.Region" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id">insert into REGION (NAME, SHORT_NAME) values (#{name},#{shortName})</insert>
+
+    <delete id="deleteRegion" parameterType="long">delete from REGION where id = #{id}</delete>
+
+    <update id="updateRegion"
+            parameterType="org.example.Region">update REGION set name=#{name}, short_name=#{shortName} where ID=#{id}</update>
+
+</mapper>
